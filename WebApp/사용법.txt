@@ -1,0 +1,19 @@
+1. 카메라
+터미널에서 순차적으로 실행
+curl http://www.linux-projects.org/listing/uv4l_repo/lpkey.asc | sudo apt-key add 
+nano /etc/apt/sources.list
+deb http://www.linux-projects.org/listing/uv4l_repo/raspbian/stretch stretch main 맨 윗줄에 넣기
+sudo apt-get update
+sudo apt-get install uv4l uv4l-raspicam
+sudo apt-get install uv4l-raspicam-extras
+sudo raspi-config 카메라 허용
+sudo rpi-update
+sudo apt-get install uv4l-server uv4l-uvc uv4l-xscreen uv4l-mjpegstream uv4l-dummy uv4l-raspidisp
+openssl genrsa -out selfsign.key 2048 && openssl req -new -x509 -key selfsign.key -out selfsign.crt -sha256
+sudo apt-get install uv4l-xmpp-bridge
+pkill uv4l
+sudo uv4l -nopreview --auto-video_nr --driver raspicam --encoding mjpeg --width 640 --height 360 --framerate 29 --vflip yes --server-option '--port=9090' --server-option '--max-queued-connections=30' --server-option '--max-streams=25' --server-option '--max-threads=29'  --server-option '--enable-builtin-ui=yes'
+라즈베리파이 아이피:9090/stream으로 접속하여 확인
+
+2. IoTMakers로부터 OPEN API를 이용하여 값 얻어오기 및 웹앱 실행
+node.js 설치 후 터미널에서 node app.js 입력

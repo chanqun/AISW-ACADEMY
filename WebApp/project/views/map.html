@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="shortcut icon" href="#">
+<meta charset="utf-8" />
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+<meta name="viewport" content="height=1080, width=1920, user-scalable=no" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript" src="https://gis.kt.com/maps/v3.0/sdk.js?key=642dd03a4712cef8bb36de4d06f8dd86565a738470cb4c697fa6cbcff6f8c65c6a66b0c4"></script>
+<script type="text/javascript" src="http://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
+
+<script type="text/javascript">
+  var options={};
+  // ���� �ʱ�ȭ
+  function init(){
+    options={};
+    options.keytype="GBOXDEVM"; // ����(GBOXDEVM) �Ǵ� ���(GBOXCOMM) Ű ���� �Է�
+    options.apikey="RTUwMDQwMTh8R0JPWERFVk18MTU3ODM4NjQ4MDkwNw=="; // ������ ���п��� Ű�� �߱޹޾� �Է�
+    gigagenie.init(options,function(result_cd,result_msg,extra){
+      if(result_cd===200){
+        //init ����
+        //callback ���
+        var options={};
+        options.ttstext="우리 농장 주변 모습입니다. 커뮤니티 및 품앗이 서비스는 조금만 기다려 주세요";
+        gigagenie.voice.sendTTS(options,function(result_cd,result_msg,extra){
+          if(result_cd===200){
+          } else {
+
+          };
+        });
+      };
+    });
+  }
+
+  // ���� ���� ���� ���� API
+  gigagenie.voice.onRequestClose=function(){
+    options={};
+    gigagenie.voice.svcFinished(options,function(result_cd,result_msg,extra){
+    });
+  };
+</script>  
+<style type ="text/css">
+
+    @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+    html { height: 100% }
+    body{
+       width: 1920;
+      height: 1080;
+      background: #e9ecef;
+      z-index: 4;
+    }
+    main{
+      background-color: gray;
+    }
+    #mainBg{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-repeat: no-repeat;
+      max-width: 100%;
+      height: auto;
+      opacity: 0.3;
+    }
+    #left-top{
+      position: absolute;
+      height: 70px;
+      width: 375px;
+      top: 75px;
+      left: 75px; 
+    }
+    #right-top{
+      position: absolute;
+      top: 15px;
+      right:75px;
+      height: 190px;
+      width: 480px;
+    }
+    #micro{
+      position: absolute;
+      bottom: 100px;
+      left: 75px;
+      height: 75px;
+      width: 75px;
+      z-index: 5;
+    }
+    #left-bottom{
+      color: white;
+      font-size: 30px;
+      font-family: 'NanumSquare';
+      position: absolute;
+      bottom: 100px;
+      left: 150px;
+      font-weight: bold;
+      border: 2px solid black; background-color: black; 
+      padding: 5px;
+      border-radius:15px;
+      z-index:5;
+    }
+    #right-bottom{
+      /* color: #258F45; */
+      color: white;
+      font-size: 30px;
+      font-family: 'NanumSquare';
+      position: absolute;
+      bottom: 100px;
+      right: 74px;
+      font-weight: bold;
+      border: 2px solid black; background-color: black; padding: 5px;
+      border-radius:15px;
+      z-index:5;
+    }
+    #kthat{
+      position: absolute;
+      height: 50px;
+      width: 80px;
+      top: 115px;
+      right: 75px;
+    }
+    #content{
+      text-align: center;
+      border-radius: 10px 10px 10px 10px;
+      border: 40px solid white;
+      position: absolute;
+      top: 220px;
+      left: 240px;
+      display: flex;
+      z-index: 2;
+    }
+    #footer{
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      height: 40%;
+      width: 100%;
+      /* background-color: #93B874; */
+      opacity: 0.8;
+      z-index: 3;
+    }
+    #map_div{
+      border-radius: 2px 2px 2px 2px;
+      border: 1px solide black;
+      height: 580px;
+      width: 950px;
+    }
+    .button{
+      width: 167px;
+      height: 565px;
+      /* border: 2px solid #04057D; background-color: rgba(0,0,0,0); */
+      border-radius:15px;
+      background-color: rgb(0,0,0,0);
+    }
+    #inner{
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 10px ;
+      
+    }
+    #sideimage{
+      position: absolute;
+      right: 140px;
+      top: 240px;
+      height: 650px;
+      width: 230px;
+    }
+    #cctv{
+      border-radius: 2px 2px 2px 2px;
+      border: 1px solid black;
+      width: 960px;
+    }
+    svg {
+      font: 10px sans-serif;
+      }
+      .line {
+        fill: none;
+        stroke: #000;
+        stroke-width: 1.5px;
+      }
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+      #farmer{
+        position: absolute;
+        top: 160px;
+        left: 290px;
+        height:60px;
+        width:60px;
+    
+      }
+    </style>v
+
+</head>
+
+  <body onload=init()>
+    <div class="main">
+      <div id="header" class="other">
+        <img id="left-top" src="img/gigalogo.png"></img>
+        <img id="right-top" src="img/5gloco_2.png"></img>
+      </div>
+      <div id="content">
+        <div id="cctv">
+          <div id="map_div"></div>
+          <!-- <img id="map_div" src="img/map.png"></img> -->
+        </div>
+        <div id="side">
+            <span id="inner">
+                <img class="button" src="img/sidebar.png"></img>
+            </span>
+        </div>
+      </div>
+      <img id="sideimage" src="img/menu_2.png"><img>
+      <img id="farmer" src="img/farmer.png"><img>
+      <div id="footer">
+      </div>
+      <img id="micro" src="img/micro.png"></img>
+      <div id="left-bottom">돌아가고 싶다면 "친구야, 나의 농장"</div>
+      <div id="right-bottom">종료하려면 "친구야, 종료"</div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    var mapOpts = {
+      center: new olleh.maps.UTMK(1009295.3467, 1931617.8971),
+      zoom: 9,
+      mapTypeId: 'ROADMAP'
+    };
+    
+    var map = new olleh.maps.Map(document.getElementById('map_div'), mapOpts); 
+    
+    function latlngToUtmk(x, y){ 
+      var p = olleh.maps.UTMK.valueOf(new olleh.maps.LatLng(x, y));
+      return p;
+    };
+
+    //내 농장
+    var p1 = latlngToUtmk(37.3809357,127.605052);
+    var marker1 = new olleh.maps.overlay.Marker({
+      position: new olleh.maps.UTMK(p1.x, p1.y),
+      map: map
+    });
+    
+    marker1.setIcon('img/black.png'); 
+
+    var p2 = latlngToUtmk(37.3796357,127.603252);
+    var marker2 = new olleh.maps.overlay.Marker({
+      position: new olleh.maps.UTMK(p2.x, p2.y),
+      map: map
+    });
+
+    var p3 = latlngToUtmk(37.3866357,127.609052);
+    var marker3 = new olleh.maps.overlay.Marker({
+      position: new olleh.maps.UTMK(p3.x, p3.y),
+      map: map
+    });
+
+    var p4 = latlngToUtmk(37.3806357,127.601052);
+    var marker4 = new olleh.maps.overlay.Marker({
+      position: new olleh.maps.UTMK(p4.x, p4.y),
+      map: map
+    });
+
+    var p5 = latlngToUtmk(37.3825357,127.600052);
+    var marker5 = new olleh.maps.overlay.Marker({
+      position: new olleh.maps.UTMK(p5.x, p5.y),
+      map: map
+    });
+
+    var p6 = latlngToUtmk(37.3790357,127.612052);
+    var marker6 = new olleh.maps.overlay.Marker({
+      position: new olleh.maps.UTMK(p6.x, p6.y),
+      map: map
+    });
+
+    var p7 = latlngToUtmk(37.3710357,127.610052);
+    var marker7 = new olleh.maps.overlay.Marker({
+      position: new olleh.maps.UTMK(p7.x, p7.y),
+      map: map
+    });
+
+ </script>
+</html>
+

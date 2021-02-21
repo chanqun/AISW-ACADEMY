@@ -1,0 +1,23 @@
+18:21:04 INF netio/sock_posix.c 0140 im_sock_co: connecting 220.90.216.90:10020
+18:21:04 DBG action/send_packet.c 0063 im_action_: [[[
+18:21:04 DBG iotmakers_api.c 0291 im_loop   : sent=[0]pkts, recv=[0]pkts
+18:21:04 DBG action/send_packet.c 0070 im_action_: len_serialized=[139]
+18:21:04 DBG util/log.c 0176 im_log_wri: 0000: 00 00 00 87 11 01 00 23 | 60 e0 80 fa 4f 57 00 00   .......#`...OW..
+18:21:04 DBG util/log.c 0176 im_log_wri: 0010: 00 00 00 00 00 00 00 00 | 00 00 00 00 00 00 00 00   ................
+18:21:04 DBG util/log.c 0176 im_log_wri: 0020: 00 00 01 01 03 00 00 7b | 22 65 78 74 72 53 79 73   .......{"extrSys
+18:21:04 DBG util/log.c 0176 im_log_wri: 0030: 49 64 22 3a 22 4f 50 45 | 4e 5f 54 43 50 5f 30 30   Id":"OPEN_TCP_00
+18:21:04 DBG util/log.c 0176 im_log_wri: 0040: 31 50 54 4c 30 30 31 5f | 31 30 30 30 39 39 39 39   1PTL001_10009999
+18:21:04 DBG util/log.c 0176 im_log_wri: 0050: 39 39 22 2c 22 64 65 76 | 49 64 22 3a 22 58 58 58   99","devId":"XXX
+18:21:04 DBG util/log.c 0176 im_log_wri: 0060: 58 58 58 58 31 34 35 34 | 33 31 37 32 30 35 34 31   XXXX145431720541
+18:21:04 DBG util/log.c 0176 im_log_wri: 0070: 32 22 2c 22 61 74 68 6e | 52 71 74 4e 6f 22 3a 22   2","athnRqtNo":"
+18:21:04 DBG util/log.c 0176 im_log_wri: 0080: 71 31 63 71 58 58 58 58 | 58 22 7d                  q1cqXXXXX"}
+18:21:04 DBG action/send_packet.c 0050 im_action_: [139]bytes sent
+18:21:04 DBG action/send_packet.c 0078 im_action_: ]]]
+18:21:04 INF iotmakers_api.c 0230 im_auth_de: wating the device authenticated.
+18:21:05 DBG iotmakers_api.c 0291 im_loop   : sent=[1]pkts, recv=[0]pkts
+18:21:05 INF iotmakers_api.c 0230 im_auth_de: wating the device authenticated.
+18:21:06 DBG iotmakers_api.c 0291 im_loop   : sent=[1]pkts, recv=[0]pkts
+18:21:06 INF iotmakers_api.c 0230 im_auth_de: wating the device authenticated.
+18:21:07 DBG iotmakers_api.c 0291 im_loop   : sent=[1]pkts, recv=[0]pkts
+18:21:07 ERR iotmakers_api.c 0227 im_auth_de: fail im_base_is_ChAthnSuccess()
+18:21:07 ERR iotmakers_api.c 0368 im_start_s: fail im_auth_device()

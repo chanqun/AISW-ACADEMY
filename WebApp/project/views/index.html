@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+  <meta name="viewport" content="height=1080, width=1920, user-scalable=no" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+
+  <script type="text/javascript" src="http://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
+  <script type="text/javascript">
+    var options={};
+    // ���� �ʱ�ȭ
+    function init(){
+      options={};
+      options.keytype="GBOXDEVM"; // ����(GBOXDEVM) �Ǵ� ���(GBOXCOMM) Ű ���� �Է�
+      options.apikey="RTUwMDQwMTh8R0JPWERFVk18MTU3ODM4NjQ4MDkwNw=="; // ������ ���п��� Ű�� �߱޹޾� �Է�
+      gigagenie.init(options,function(result_cd,result_msg,extra){
+        if(result_cd===200){
+          //init ����
+          //callback ���
+          var options={};
+          options.ttstext="스마트 농장 비서 오지네 집밭에 오신 것을 환영합니다. 무엇을 도와드릴까요";
+          gigagenie.voice.sendTTS(options,function(result_cd,result_msg,extra){
+            if(result_cd===200){
+              
+            } else {
+
+            };
+          });
+        };
+      });
+    }
+
+    // ���� ���� ���� ���� API
+    gigagenie.voice.onRequestClose=function(){
+      options={};
+      gigagenie.voice.svcFinished(options,function(result_cd,result_msg,extra){
+      });
+    };
+
+
+  </script>
+  <style type ="text/css">
+
+    @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+    
+    body{
+       width: 1920;
+      height: 1080;
+      background: #e9ecef;
+      z-index: 4;
+    }
+    main{
+      background-color: gray;
+    }
+    #mainBg{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-repeat: no-repeat;
+      max-width: 100%;
+      height: auto;
+      opacity: 0.3;
+    }
+    #left-top{
+      position: absolute;
+      height: 70px;
+      width: 375px;
+      top: 75px;
+      left: 75px; 
+    }
+    #right-top{
+      position: absolute;
+      top: 15px;
+      right:75px;
+      height: 190px;
+      width: 480px;
+    }
+    #micro{
+      position: absolute;
+      bottom: 100px;
+      left: 75px;
+      height: 75px;
+      width: 75px;
+      z-index: 5;
+    }
+    #left-bottom{
+      color: white;
+      font-size: 30px;
+      font-family: 'NanumSquare';
+      position: absolute;
+      bottom: 100px;
+      left: 150px;
+      font-weight: bold;
+      border: 3px solid black; background-color: black; 
+      padding: 5px;
+      border-radius:15px;
+      z-index:5;
+    }
+    #right-bottom{
+      /* color: #258F45; */
+      color: white;
+      font-size: 30px;
+      font-family: 'NanumSquare';
+      position: absolute;
+      bottom: 100px;
+      right: 74px;
+      font-weight: bold;
+      border: 3px solid black; background-color: black; padding: 5px;
+      border-radius:15px;
+      z-index:5;
+    }
+    #kthat{
+      position: absolute;
+      height: 50px;
+      width: 80px;
+      top: 115px;
+      right: 75px;
+    }
+    #content{
+      text-align: center;
+      border-radius: 10px 10px 10px 10px;
+      border: 40px solid white;
+      position: absolute;
+      top: 220px;
+      left: 240px;
+      display: flex;
+      z-index: 2;
+    }
+    #footer{
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      height: 40%;
+      width: 100%;
+      /* background-color: #93B874; */
+      opacity: 0.8;
+      z-index: 3;
+    }
+    #cctv{
+      border-radius: 2px 2px 2px 2px;
+      border: 1px solid black;
+      width: 850px;
+    }
+    .graph{
+      width: 350px;
+      height: 200px;
+      padding: 10px;
+    }
+    #inner{
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+    #sideimage{
+      position: absolute;
+      right: 140px;
+      top: 240px;
+      height: 600px;
+      width: 200px;
+    
+    }
+    
+    svg {
+      font: 10px sans-serif;
+      }
+      .line {
+        fill: none;
+        stroke: #000;
+        stroke-width: 1.5px;
+      }
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+      #farmer{
+        position: absolute;
+        top: 160px;
+        left: 290px;
+        height:60px;
+        width:60px;
+    
+      }
+    
+    </style>
+</head>
+
+<body onload=init()>
+<div class="main">
+  <div id="header" class="other">
+    <img id="left-top" src="img/gigalogo.png"></img>
+    <img id="right-top" src="img/5gloco_2.png"></img>
+  </div>
+  <div id="content">
+    <img id="cctv" src="http://172.30.1.34:9090/stream/video.mjpeg"></img>
+    <div id="side">
+      <span id="inner">
+        <div class="graph">
+          <canvas id="canTeHu"></canvas>
+        </div>
+        <div class="graph">
+          <canvas id="canCoSo"></canvas>
+        </div class="graph">
+          <canvas id="canBar"></canvas>
+        </div>
+      </span>
+    </div>
+    </div>
+  </div>
+  <img id="sideimage" src="img/menu_1.png"><img>
+  <img id="farmer" src="img/farmer.png"><img>
+  <div id="footer">
+  </div>
+  <img id="micro" src="img/micro.png"></img>
+  <div id="left-bottom">주변 농장을 보고 싶다면 "친구야, 주변 이웃"</div>
+  <div id="right-bottom">종료하려면 "친구야, 종료"</div>
+</div>
+
+<script script>
+  playMsg = setInterval(function() {
+      getData();
+  }, 3000);
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script type="text/javascript" src="./invoke_api.js"></script>
+
+</body>
+</html>
+
